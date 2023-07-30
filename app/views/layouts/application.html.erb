@@ -6,11 +6,55 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/31634c652a.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+
+      <nav class="navbar navbear-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3", href='/'><%= image_tag('147306248-67b06731-c5f1-4c09-b341-5d480d77873f') %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in?%>
+              <li>
+                <%= link_to "マイページ", public_customer_show_path %>
+              </li>
+              <li>
+                <%= link_to "商品一覧", public_items_index_path %>
+              </li>
+              <li>
+                <%= link_to "カート", public_cart_items_index_path %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_customer_session_path, methid: :delete %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "About", public_about_path %>
+              </li>
+              <li>
+                <%= link_to "商品一覧", public_items_index_path %>
+              </li>
+              <li>
+                <%= link_to "新規登録", new_customer_registration_path %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_customer_session_path %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <footer></footer>
     <%= yield %>
   </body>
 </html>
