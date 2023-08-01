@@ -7,11 +7,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
      super
+     
   end
 
   # POST /resource
   def create
-  #   super
+    super
   end
 
   # GET /resource/edit
@@ -42,7 +43,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, :first_name, :last_name])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute, :first_name, :last_name, :last_name_kana,:first_name_kana,:email,:address,:telephone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
