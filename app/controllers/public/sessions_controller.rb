@@ -5,12 +5,16 @@ class Public::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-  #   super
+   super
+   @customer = Customer.new
   end
 
   # POST /resource/sign_in
   def create
-  #   super
+   super
+   customer = Customer.new
+   customer.save
+   redirect_to "public/items"
   end
 
   # DELETE /resource/sign_out

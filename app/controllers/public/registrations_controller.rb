@@ -7,12 +7,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
      super
-     
+      @customer = Customer.new
   end
 
   # POST /resource
   def create
     super
+     customer = Customer.new
+     customer.save
+     redirect_to "public/items"
   end
 
   # GET /resource/edit

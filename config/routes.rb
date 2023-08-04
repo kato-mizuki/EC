@@ -46,9 +46,10 @@ Rails.application.routes.draw do
     get 'customers/withdraw_update'
   end
   namespace :public do
-    get 'items/index'
+    get 'items'
     get 'items/show'
   end
+  
   devise_for :admins,skip: [:registrations,:passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -56,5 +57,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+  devise_scope :customer do
+    resources :sessions, only: [:new,:create,:destroy]
+    resources :registrations, only: [:new,:create]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

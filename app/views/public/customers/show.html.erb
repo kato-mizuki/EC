@@ -1,2 +1,39 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<span class="bg-secondary">マイページ</span>
+<h2>会員登録情報</h2>
+<%= form_with model: @customer do |f| %>
+ <%= f.submit "編集する", public_customers_edit_path, class: "btn btn-success" do %>
+ <% end %>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td>氏名</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>カナ</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</br></br>
+<h2>注文履歴一覧</h2>
+<%= f.submit "一覧を見る", public_orders_index_path, class: "btn btn-primary" do %>
+<% end %>
+<% end %>
