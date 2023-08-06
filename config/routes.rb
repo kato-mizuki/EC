@@ -1,23 +1,23 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/show'
+    get 'orders/:id' => 'orders#show'
   end
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/update'
-    get 'customers/edit'
+    get '/customers' => 'customers#index'
+    get 'customers/:id' =>'customers#show'
+    patch 'customers/:id' => 'customers#update'
+    get 'customers/:id/edit' => 'customers#edit'
   end
   namespace :admin do
-    get 'items/index'
+    get '/items' => 'items#index'
     get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/update'
-    get 'items/edit'
+    post '/items' => 'items#create'
+    get 'items/:id' => 'items#show'
+    patch 'items/:id' => 'items#update'
+    get 'items/:id/edit' => 'items#edit'
   end
   namespace :admin do
-    get 'admin' => 'homes#top'
+    get '/' => 'homes#top'
   end
   namespace :public do
     get '/' => 'homes#top'
@@ -25,31 +25,31 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'orders/new'
-    get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/thanks'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
+    post '/orders' => 'orders#create'
+    get '/orders' => 'orders#index'
+    get 'orders/:id' => 'orders#show'
   end
   namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
+    get '/cart_items' => 'cart_items#index'
+    patch 'cart_items/:id'  => 'cart_items#update'
+    delete 'cart_items/:id' => 'cart_items#destroy'
+    delete 'cart_items/:id' => 'cart_items#destroy_all'
+    post '/cart_items' => 'cart_items#create'
   end
   namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
+    get 'customers/information' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/update'
     get 'customers/withdraw'
-    get 'customers/withdraw_update'
+    patch 'customers/withdraw' => 'customers#withdraw_update'
   end
   namespace :public do
-    get 'items'
-    get 'items/show'
+    get 'items' => 'items#index'
+    get 'items/:id' => 'items#show'
   end
-  
+
   devise_for :admins,skip: [:registrations,:passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -57,8 +57,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  devise_scope :customer do
+  devise_scope :customers do
     resources :sessions, only: [:new,:create,:destroy]
+  end
+
+  devise_scope :customers do
     resources :registrations, only: [:new,:create]
   end
 
