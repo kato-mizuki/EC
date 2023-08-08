@@ -1,2 +1,24 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<span class="bg-secondary">商品新規登録</span>
+<%= form_with model: @item do |item| %>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td>商品画像</td>
+      <td><%= f.file_field :image %></td>
+    </tr>
+    <tr>
+      <td>商品名</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>商品説明</td>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+    <tr>
+      <td>税抜き価格</td>
+      <td><%= f.text_field :price %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
