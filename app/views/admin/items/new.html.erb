@@ -1,11 +1,11 @@
 <span class="bg-secondary">商品新規登録</span>
-<%= form_with model: @item do |item| %>
+<%= form_with model: @item, url: '/admin/items' do |f| %>
 <table>
   <thead></thead>
-  <tbody>
+  <tbody class="text-center">
     <tr>
       <td>商品画像</td>
-      <td><%= f.file_field :image %></td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
     </tr>
     <tr>
       <td>商品名</td>
@@ -16,9 +16,13 @@
       <td><%= f.text_area :introduction %></td>
     </tr>
     <tr>
-      <td>税抜き価格</td>
+      <td>税抜価格</td>
       <td><%= f.text_field :price %></td>
     </tr>
   </tbody>
 </table>
+
 <% end %>
+<div class="btn btn-success ">
+  <%= link_to "新規登録", 'admin_items_:id' %>
+</div>

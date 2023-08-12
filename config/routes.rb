@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     get '/items' => 'items#index'
-    get 'items/new'
+    get 'items/new' => 'items#new'
     post '/items' => 'items#create'
     get 'items/:id' => 'items#show'
     patch 'items/:id' => 'items#update'
