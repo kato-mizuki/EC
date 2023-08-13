@@ -1,5 +1,5 @@
 <span class="bg-secondary">商品新規登録</span>
-<%= form_with model: @item, url: '/admin/items' do |f| %>
+<%= form_with model: @item, url: admin_items_path do |f| %>
 <table>
   <thead></thead>
   <tbody class="text-center">
@@ -19,10 +19,10 @@
       <td>税抜価格</td>
       <td><%= f.text_field :price %></td>
     </tr>
+    <tr>
+      <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+    </tr>
   </tbody>
 </table>
 
 <% end %>
-<div class="btn btn-success ">
-  <%= link_to "新規登録", 'admin_items_:id' %>
-</div>

@@ -1,53 +1,37 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/:id' => 'orders#show'
+    resources :orders, only: [:show]
   end
   namespace :admin do
-    get '/customers' => 'customers#index'
-    get 'customers/:id' =>'customers#show'
-    patch 'customers/:id' => 'customers#update'
-    get 'customers/:id/edit' => 'customers#edit'
+    resources :customers, only: [:index,:show,:edit,:update]
   end
   namespace :admin do
-    get '/items' => 'items#index'
-    get 'items/new' => 'items#new'
-    post '/items' => 'items#create'
-    get 'items/:id' => 'items#show'
-    patch 'items/:id' => 'items#update'
-    get 'items/:id/edit' => 'items#edit'
+    resources :items, only: [:index,:new,:create,:show,:edit,:update]
   end
   namespace :admin do
-    get '/admin' => 'homes#top'
+    get '/' => 'homes#top'
   end
   namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
   end
   namespace :public do
-    get 'orders/new'
-    post 'orders/confirm'
-    get 'orders/thanks'
-    post '/orders' => 'orders#create'
-    get '/orders' => 'orders#index'
-    get 'orders/:id' => 'orders#show'
+    resources :orders, only: [:new,:index,:create,:show]
+    get 'orders/thanks' => 'orders#thanks'
+    post 'orders/confirm' => 'orders#confirm'
   end
   namespace :public do
-    get '/cart_items' => 'cart_items#index'
-    patch 'cart_items/:id'  => 'cart_items#update'
-    delete 'cart_items/:id' => 'cart_items#destroy'
-    delete 'cart_items/:id' => 'cart_items#destroy_all'
-    post '/cart_items' => 'cart_items#create'
+    resources :cart_items, only: [:index,:create,:update,:destroy,:destroy_all]
   end
   namespace :public do
     get 'customers/information' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
-    patch 'customers/update'
-    get 'customers/withdraw'
+    patch 'customers/update' => 'customers#update'
+    get 'customers/withdraw' => 'customers#withdraw'
     patch 'customers/withdraw' => 'customers#withdraw_update'
   end
   namespace :public do
-    get 'items' => 'items#index'
-    get 'items/:id' => 'items#show'
+    resources :items, only: [:index,:show]
   end
 
   devise_for :admins,skip: [:registrations,:passwords], controllers: {
