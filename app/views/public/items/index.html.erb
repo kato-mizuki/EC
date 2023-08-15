@@ -8,7 +8,7 @@
       <tbody>
         <tr>
           <td></br>
-            <%= item.image %>
+            <%= link_to item.image, public_item_path(item.id) %>
           </td>
         </tr>
         <tr>
@@ -24,3 +24,4 @@
         <% end %>
       </tbody>
     </table>
+<%= paginate @item %>

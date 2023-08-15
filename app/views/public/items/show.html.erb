@@ -1,2 +1,24 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<table>
+  <thead>
+    <tr><%= @items.image %></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= @items.name %></th>
+    </tr>
+    <tr>
+      <td><%= @items.introduction %></td>
+    </tr>
+    <tr>
+      <td>
+        ￥ <%= @items.add_tax_price.to_s(:dalimited) %>(税込)
+      </td>
+    </tr>
+    <tr>
+    <%= form_with model: @items,url: public_cart_item_path do |f| %>
+      <td><%= f.select :amount, *[1..10], include_blank: "選択して下さい" %></td>
+      <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
