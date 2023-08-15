@@ -34,9 +34,31 @@
   <div class="row">
     <h2>
       新着商品
-    </h2>
-    
+    </h2></br></br>
+    <table>
+      <thead></thead>
+      <tbody>
+        <tr>
+           <% @item.each do |item| %>
+          <td></br>
+            <%= item.image %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= item.name %>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            ￥<%= item.price %>
+          </th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
+    <%= link_to "すべての商品を見る>", public_items_path %>
   </div>
 </div>
 
