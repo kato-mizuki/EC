@@ -15,7 +15,7 @@
       </td>
     </tr>
     <tr>
-    <%= form_with model: @items,url: public_cart_item_path do |f| %>
+    <%= form_with model: @items,url: public_cart_items_path do |f| %>
       <td><%= f.select :amount, *[1..10], include_blank: "選択して下さい" %></td>
       <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
     <% end %>
