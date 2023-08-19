@@ -14,11 +14,12 @@
         ￥ <%= @items.with_tax_price.to_s(:dalimited) %>(税込)
       </td>
     </tr>
+    <%= form_with model: @cart_item,url: public_cart_items_path do |f| %>
     <tr>
-    <%= form_with model: @items,url: public_cart_items_path do |f| %>
+      <%= f.hidden_field :item_id, :value => @items.id %>
       <td><%= f.select :amount, *[1..10], include_blank: "選択して下さい" %></td>
-    <% end %>
-      <td><%= link_to "カートに入れる", public_cart_items_path, class: "btn btn-success" %></td>
+      <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
