@@ -1,2 +1,66 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<span class="bg-secondary">注文情報確認</span>
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <% @total = @total+cart_item.subtotal %>
+    <tr>
+      <td>
+        <%= cart_item.item.image %>
+        <%= cart_item.item.name %>
+      </td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td><%= cart_item.amount %></td>
+      <td><%= cart_item.subtotal %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>送料</th>
+      <td>800</td>
+    </tr>
+    <tr>
+      <th>商品合計</th>
+      <td>
+        <%= @total %>
+      </td>
+    </tr>
+    <tr>
+      <th>請求金額</th>
+      <td><%= @total+800 %></td>
+    </tr>
+  </thead>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
+    <tr>
+      <th>お届け先</th>
+      <td>
+        <%= current_customer.postal_code %>
+        <%= current_customer.address %>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>
+        <%= current_customer.last_name %>
+        <%= current_customer.first_name %>
+      </td>
+    </tr>
+  </thead>
+</table>
+<%= link_to "注文を確定する", public_orders_thanks_path, class: "btn btn-success" %>

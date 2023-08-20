@@ -16,9 +16,9 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
   end
   namespace :public do
-    resources :orders, only: [:new,:index,:create,:show]
     get 'orders/thanks' => 'orders#thanks'
     post 'orders/confirm' => 'orders#confirm'
+    resources :orders, only: [:new,:index,:create,:show]
   end
   namespace :public do
     delete '/cart_items' => 'cart_items#destroy_all'
