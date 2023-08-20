@@ -13,19 +13,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    orders = Order.new(order_params)
-    orders.each do |order|
-      if 
-        new_amount = cart_item.amount + @cart_item.amount
-        cart_item.update_attribute(:amount, new_amount)
-        order.delete
-      end
+    @orders = Order.new(order_params)
+    @orders.customer_id = current_customer.id
+    @order = current_customer.orders
+    @order.each do |order|
+        total
+        order.update_attribute(total)
+        @orders.delete
     end
-    orders.save
-    redirect_to public_cart_items_path
+    @orders.save
+    redirect_to public_orders_thanks_path
   end
 
   def index
+    @orders = Order.all
   end
 
   def show
