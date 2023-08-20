@@ -17,7 +17,7 @@
     <%= form_with model: @cart_item,url: public_cart_items_path do |f| %>
     <tr>
       <%= f.hidden_field :item_id, :value => @items.id %>
-      <td><%= f.select :amount, *[1..10], include_blank: "選択して下さい" %></td>
+      <td><%= f.select :amount, *[1..10], include_blank: "個数選択" %></td>
       <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
     </tr>
     <% end %>

@@ -1,2 +1,77 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<span class="bg-secondary">注文履歴詳細</span>
+<table>
+  <thead>
+    <tr>
+      <th>購入者</th>
+      <td>
+        <%= link_to @order.customer.last_name, admin_customer_path(customer.id) %>
+        <%= link_to @order.customer.first_name, admin_customer_path(customer.id) %>
+      </td>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <td><%= @order.created_at %></td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td>
+        <%= @order.postal_code %>
+        <%= @order.address %>
+      </td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= @order.address_name %></td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_method %></td>
+    </tr>
+    <tbody></tbody>
+  </thead>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total = 0 %>
+    <% @order.each do |order| %>
+    <tr>
+      <td><%= order.itme.name %></td>
+      <td><%= order.item.with_tax_price %></td>
+      <td><% order.order_details.each do |order_detail| %>
+        <%= order_detail.item_amount %>
+        <% end %>
+      </td>
+      <td><%= order.subtotal %></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <th>商品合計</th>
+      <% @total += order.subtotal %>
+      <td><%= @total %>円 </td>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <td>800円</td>
+    </tr>
+    <tr>
+      <th>請求金額合計</th>
+      <td><%= @total + 800 %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

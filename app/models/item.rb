@@ -5,4 +5,5 @@ class Item < ApplicationRecord
  end
   has_one_attached :image
   has_many :cart_item, dependent: :destroy
+  belongs_to :order
 end

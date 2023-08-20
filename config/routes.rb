@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
   end
   namespace :public do
-    resources :cart_items, only: [:index,:create,:update,:destroy,:destroy_all]
+    delete '/cart_items' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index,:create,:update,:destroy]
   end
   namespace :public do
     get 'customers/information' => 'customers#show'
