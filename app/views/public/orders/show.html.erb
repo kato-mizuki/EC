@@ -1,5 +1,35 @@
 <span class="bg-secondary">注文履歴詳細</span>
-<table>
+<div class="container">
+ <div class="row">
+       <table class="table table-striped">
+            <thead>
+             <tr>
+                <th>注文情報</th>
+                <td></td>
+             </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>注文日</th>
+                    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+                </tr>
+                <tr>
+                    <th>配送先</th>
+                    <td>
+                        <%= @order.postal_code %></br>
+                        <%= @order.address %>
+                        <%= @order.address_name %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>支払方法</th>
+                    <td><%= @order.payment_method_i18n %></td>
+                </tr>
+            </tbody>
+    </table>
+    </div>
+</div>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>注文情報</th>
@@ -25,7 +55,7 @@
         </tr>
     </tbody>
 </table>
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>請求情報</th>
@@ -47,7 +77,7 @@
         </tr>
     </tbody>
 </table>
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>注文内容</th>
