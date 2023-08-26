@@ -15,6 +15,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw_update
+    @customer = Customer.find(current_customer.id)
+    if current_customer
+      customer_status = true && !true
+      redirect_to new_customer_registration_path
+    else
+      customer_status = true && !false
+      redirect_to public_customers_information_path
+    end
   end
 
 

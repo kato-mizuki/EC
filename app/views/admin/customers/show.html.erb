@@ -1,9 +1,9 @@
-<span class="bg-secondary">
-    <%= @customers.last_name %>
-    <%= @customers.first_name %>さんの会員詳細画面
-</span></br></br>
 <div class="container">
   <div class="row">
+    <span class="bg-secondary">
+      <%= @customers.last_name %>
+      <%= @customers.first_name %>さんの会員詳細画面
+    </span></br>
     <table class="table">
       <thead></thead>
       <tbody>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
          <td>会員ステータス</td>
-         <td></td>
+         <td><span style="margin-left:90px; color:<%= @customers.is_deleted ? 'gray' : 'green' %>;"><%= @customers.is_deleted ? '退会済み' : '有効' %></span></td>
         </tr>
         <tr>
           <td></td>
