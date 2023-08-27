@@ -1,6 +1,6 @@
 </br><div class="container">
   <div class="row">
-    <span class="bg-secondary">注文履歴一覧</span>
+    <span class="p-2 mb-1 bg-secondary">注文履歴一覧</span>
   </div>
 </div></br>
 <div class="container">
@@ -32,6 +32,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @orders %>
+
   </div>
 </div>
+<%= paginate @orders %>

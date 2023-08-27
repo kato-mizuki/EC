@@ -1,10 +1,15 @@
-<span class="bg-secondary">
-  <%= @customers.last_name %>
-  <%= @customers.first_name %>さんの会員情報編集
-</span></br>
 <div class="container">
   <div class="row">
-    <table class="table">
+    <span class="p-2 mb-1 bg-secondary">
+      <%= @customers.last_name %>
+      <%= @customers.first_name %>さんの会員情報編集
+    </span>
+  </div>
+</div>
+</br>
+<div class="container">
+  <div class="row">
+    <table class="table table-borderless col-md-8">
       <thead></thead>
       <tbody>
         <tr>
