@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
   end
   namespace :public do
-    get '/' => 'homes#top'
+    root to: 'homes#top'
     get '/about' => 'homes#about'
   end
   namespace :public do
