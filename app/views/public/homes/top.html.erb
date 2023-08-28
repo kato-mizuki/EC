@@ -1,26 +1,36 @@
+</br>
 <div class="container">
   <div class="row">
-    <table  class="table col-4">
+    <table  class="table table-sm col-2">
       <thead>
-        <tr>
+        <tr class="p-3">
           <th>ジャンル検索</th>
         </tr>
-        <tr>
+        <tr class="p-3">
           <td>ケーキ</td>
         </tr>
-        <tr>
+        <tr class="p-3">
           <td>焼き菓子</td>
         </tr>
-        <tr>
+        <tr class="p-3">
           <td>プリン</td>
         </tr>
-        <tr>
+        <tr class="p-3">
           <td>キャンディ</td>
+        </tr>
+        <tr class="p-3">
+          <td></td>
+        </tr>
+        <tr class="p-3">
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-    <h3 class="col-8 offset-">
+    <h3 class="col-10 d-flex align-items-center justify-content-center">
       ようこそ、ながのCAKEへ！</br>
       このサイトは、ケーキ販売のECサイトになります。</br>
       会員でない方も商品の閲覧はできますが、</br>
@@ -30,16 +40,24 @@
 </div>
 <div class="container">
   <div class="row">
-    <h2>
+    <strong class="p-2 mb-3 display-4">
       新着商品
-    </h2></br></br>
-    <table>
+    </strong></br></br>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @item.each do |item| %>
+    <table class="table table-borderless col-3">
       <thead></thead>
       <tbody>
         <tr>
-           <% @item.each do |item| %>
           <td></br>
-            <%= item.image %>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "100x100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
           </td>
         </tr>
         <tr>
@@ -52,11 +70,12 @@
             ￥<%= item.price %>
           </th>
         </tr>
-        <% end %>
       </tbody>
     </table>
+    <% end %>
+    <div class="d-flex align-items-end">
+        <%= link_to "全ての商品を見る　>", public_items_path %>
+    </div>
 
-    <%= link_to "すべての商品を見る>", public_items_path %>
   </div>
 </div>
-

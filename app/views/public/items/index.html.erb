@@ -1,27 +1,42 @@
-    <table>
-      <thead>
-        <tr>
-          <th>商品一覧(全<%= @item.count %>件)</th>
-        </tr>
-      </thead>
-      <% @item.each do |item| %>
-      <tbody>
-        <tr>
-          <td></br>
-            <%= link_to item.image, public_item_path(item.id) %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= item.name %>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            ￥<%= item.price %>
-          </th>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-<%= paginate @item %>
+  <div class="container">
+    <div class="row">
+      <table class="table table-borderless col-md-3">
+        <thead>
+          <tr>
+            <th>商品一覧(全<%= @item.count %>件)</th>
+          </tr>
+        </thead>
+        <% @item.each do |item| %>
+        <tbody>
+          <tr>
+            <td></br>
+            <% if item.image.attached? %>
+              <%= link_to item.image, public_item_path(item.id) %>
+            <% else %>
+              <%= link_to 'no_image', public_item_path(item.id) %>
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= item.name %>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              ￥<%= item.price %>
+            </th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="text-center">
+        <%= paginate @item %>
+      </div>
+    </div>
+  </div>

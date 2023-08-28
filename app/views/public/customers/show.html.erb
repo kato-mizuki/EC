@@ -1,35 +1,58 @@
-<span class="bg-secondary">マイページ</span>
-<h3>登録情報</h3>
- <%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
-<table>
-  <thead></thead>
-  <tbody>
-    <tr>
-      <td>氏名</td>
-      <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
-    </tr>
-    <tr>
-      <td>カナ</td>
-      <td><%= current_customer.last_name_kana %><%= current_customer.first_name_kana %></td>
-    </tr>
-    <tr>
-      <td>郵便番号</td>
-      <td><%= current_customer.postal_code %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= current_customer.address %></td>
-    </tr>
-    <tr>
-      <td>電話番号</td>
-      <td><%= current_customer.telephone_number %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= current_customer.email %></td>
-    </tr>
-  </tbody>
-</table>
-</br></br>
-<h3>注文履歴一覧</h3>
-<%= link_to "一覧を見る", public_orders_path, class: "btn btn-primary" %>
+</br>
+<div class="container">
+  <div class="row">
+    <span class="p-2 mb-2 bg-secondary">マイページ</span>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <strong class="font-large">
+      <h3 class="p-2">登録情報</h3>
+    </strong>
+    <div class="text-right">
+      <%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <table class="table table-md table-bordered col-lg-8">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <td class="table-active">氏名</td>
+          <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+        </tr>
+        <tr>
+          <td class="table-active">カナ</td>
+          <td><%= current_customer.last_name_kana %><%= current_customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td class="table-active">郵便番号</td>
+          <td><%= current_customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td class="table-active">住所</td>
+          <td><%= current_customer.address %></td>
+        </tr>
+        <tr>
+          <td class="table-active">電話番号</td>
+          <td><%= current_customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td class="table-active">メールアドレス</td>
+          <td><%= current_customer.email %></td>
+        </tr>
+      </tbody>
+    </table>
+    </br></br>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h3 class="p-1">注文履歴一覧</h3>
+    <div class="text-right p-1">
+      <%= link_to "一覧を見る", public_orders_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
