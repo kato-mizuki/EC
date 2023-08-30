@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <span class="bg-secondary">注文情報確認</span>
-  </div> 
+  </div>
 </div>
 <div class="container">
   <div class="row">
-    <table>
+    <table class="table table-bordered col-8">
       <thead>
-        <tr>
+        <tr class="table-active">
           <th>商品名</th>
           <th>単価(税込)</th>
           <th>数量</th>
@@ -29,48 +29,47 @@
         <% end %>
       </tbody>
    </table>
-  </div>
-</div>
+    <table class="table col-3 ml-auto">
+      <thead>
+        <tr>
+          <th class="table-active">送料</th>
+          <td>800</td>
+        </tr>
+        <tr>
+          <th class="table-active">商品合計</th>
+          <td>
+            <%= @total %>
+          </td>
+        </tr>
+        <tr>
+          <th class="table-active">請求金額</th>
+          <td><%= @total+800 %></td>
+        </tr>
+      </thead>
+    </table>
+    <table class="table table-borderless table-sm">
+      <thead>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>お届け先</th>
+          <td>
+            <%= @order.postal_code %>
+            <%= @order.address %>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <%= @order.address_name %>
+          </td>
+        </tr>
+      </thead>
+    </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>送料</th>
-      <td>800</td>
-    </tr>
-    <tr>
-      <th>商品合計</th>
-      <td>
-        <%= @total %>
-      </td>
-    </tr>
-    <tr>
-      <th>請求金額</th>
-      <td><%= @total+800 %></td>
-    </tr>
-  </thead>
-</table>
-<table>
-  <thead>
-    <tr>
-      <th>支払方法</th>
-      <td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-      <th>お届け先</th>
-      <td>
-        <%= @order.postal_code %>
-        <%= @order.address %>
-      </td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>
-        <%= @order.address_name %>
-      </td>
-    </tr>
-  </thead>
-</table>
+
 <%= form_with model: @order, url: public_orders_path do |f| %>
 <%= f.hidden_field :customer_id, :value => current_customer.id %>
 <%= f.hidden_field :address, :value => @order.address %>
@@ -80,4 +79,5 @@
 <%= f.hidden_field :postage, :value => 800 %>
 <%= f.hidden_field :total_price, :value => @total +800 %>
   <%= f.submit "注文を確定する", class: "btn btn-success" %>
-<% end %>
+<% end %></div>
+</div>
