@@ -19,7 +19,11 @@
         <% @total = @total+cart_item.subtotal %>
         <tr>
           <td>
-            <%= cart_item.item.image %>
+            <% if @items.image.attached? %>
+              <%= image_tag @items.image, size: "50×50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50×50" %>
+            <% end %>
             <%= cart_item.item.name %>
           </td>
           <td><%= cart_item.item.with_tax_price %></td>
@@ -29,7 +33,7 @@
         <% end %>
       </tbody>
    </table>
-    <table class="table col-3 ml-auto">
+    <table class="table table-bordered col-3 ml-auto">
       <thead>
         <tr>
           <th class="table-active">送料</th>

@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     @total = 0
+    @items = Item.find(current_customer.id)
   end
 
   def thanks
