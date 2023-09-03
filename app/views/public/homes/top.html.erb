@@ -1,9 +1,9 @@
 </br>
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
     <div class="col-md-2">
       <table  class="table table-bordered">
-        <thead>
+        <thead class="table table-borderless">
           <tr class="p-3">
             <th>ジャンル検索</th>
           </tr>
@@ -19,7 +19,7 @@
           <tr class="p-3">
             <td>キャンディ</td>
           </tr>
-          <tr class="p-10">
+          <tr class="p-5">
             <td></td>
           </tr>
         </thead>
@@ -37,38 +37,45 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-      <strong class="display-4">
+      <h2 class="font-weight-bold">
         新着商品
-      </strong></br></br>
-      <% @item.each do |item| %>
-      <table class="table table-borderless col-3">
-        <thead></thead>
-        <tbody>
-          <tr>
-            <td></br>
-              <% if item.image.attached? %>
-                <%= image_tag item.image, size: "100x100" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "100x100" %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <%= item.name %>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              ￥<%= item.price %>
-            </th>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
+      </h2>
+        </br></br>
+    </div>
+  </div>
+</div>
+<div class="contianer">
+  <div class="row">
+    <% @item.each do |item| %>
+      <div class="col-md-3">
+         <table class="table table-borderless table-sm">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td></br>
+                <% if item.image.attached? %>
+                  <%= image_tag item.image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= item.name %>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                ￥<%= item.price %>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
       <div class="d-flex align-items-end">
           <%= link_to "全ての商品を見る　>", public_items_path %>
       </div>
-    </div>
   </div>
 </div>

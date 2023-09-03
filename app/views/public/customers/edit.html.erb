@@ -9,7 +9,7 @@
     <table class="table table-borderless col-lg-8">
       <thead></thead>
       <tbody>
-        <%= form_with model: @customer, url: public_customers_information_path, method: :get do |f| %>
+        <%= form_with model: @customer, url: public_customers_update_path, method: :patch do |f| %>
         <tr>
           <td>氏名</td>
           <td><%= f.text_field :last_name %></td>

@@ -31,7 +31,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders= Order.find(current_customer.id)
+    @orders= Order.all
+    @order = @orders.find(current_customer.id)
   end
 
   def show

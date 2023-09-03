@@ -17,21 +17,22 @@
         </tr>
       </thead>
       <tbody>
-
+      <% @orders.each do |order| %>
         <tr>
-          <td><%= @orders.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           <td>
-            <%= @orders.postal_code %></br>
-            <%= @orders.address %></br>
-            <%= @orders.address_name %>
+            <%= @order.postal_code %></br>
+            <%= @order.address %></br>
+            <%= @order.address_name %>
           </td><td>
-          <% @orders.order_details.each do |order_detail| %>
+          <% @order.order_details.each do |order_detail| %>
            <%= order_detail.item.name %></br>
-
+          <% end %>
           </td>
-          <td><%= @orders.total_price %></td>
+          <td><%= @order.total_price %></td>
           <td><%= link_to "表示する", public_order_path(current_customer.id), class: "btn btn-primary" %></td>
-        </tr><% end %>
+        </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
