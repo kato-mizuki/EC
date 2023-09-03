@@ -1,6 +1,7 @@
+</br>
 <div class="container">
   <div class="row">
-    <span class="bg-secondary">注文情報確認</span>
+    <span class="bg-secondary p-1 mb-2">注文情報確認</span>
   </div>
 </div>
 <div class="container">
@@ -19,8 +20,8 @@
         <% @total = @total+cart_item.subtotal %>
         <tr>
           <td>
-            <% if @items.image.attached? %>
-              <%= image_tag @items.image, size: "50×50" %>
+            <% if cart_item.item.image.attached? %>
+              <%= image_tag cart_item.item.image, size: "50×50" %>
             <% else %>
               <%= image_tag 'no_image', size: "50×50" %>
             <% end %>

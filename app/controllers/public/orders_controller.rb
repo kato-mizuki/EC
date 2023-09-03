@@ -7,7 +7,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     @total = 0
-    @items = Item.find(current_customer.id)
   end
 
   def thanks
@@ -25,7 +24,6 @@ class Public::OrdersController < ApplicationController
         order_detail.item_amount = cart_item.amount
         order_detail.add_tax_price = cart_item.item.with_tax_price
         order_detail.save
-        cart_item.update_attribute
         cart_item.delete
     end
 
@@ -33,18 +31,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders= Order.find(current_customer.id)
   end
 
   def show
-    @orders = Order.all
-    @order = Order.find(current_customer.id)
+    @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:address_name, :postal_code, :address, :payment_method, :total_price, :postage)
+    params.require(:order).permit(:address_name, :postal_code, :address, :payment_method, :total_price, :postage, :id)
   end
 end
