@@ -15,15 +15,16 @@
         </tr>
       </thead>
       <tbody>
-        <% order_amount = 0 %>
+
         <% @orders.each do |order| %>
 
         <tr>
           <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
           <td>
             <%= order.address_name %>
-          </td>
+          </td><% order_amount = 0 %>
           <td><% order.order_details.each do |order_detail| %>
+
           <% order_amount += order_detail.item_amount %>
           <% end %>
           <%= order_amount %></td>

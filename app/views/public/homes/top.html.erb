@@ -47,7 +47,7 @@
 <div class="contianer">
   <div class="row">
     <% @item.each do |item| %>
-      <div class="col-md-2 ml-auto">
+      <div class="col-md-2 ml-auto offset-md-2">
          <table class="table table-borderless table-sm">
           <thead></thead>
           <tbody>
@@ -75,10 +75,10 @@
               </th>
             </tr>
           </tbody>
-        </table>
+        </table></br></br>
       </div>
-    <% end %></br>
-      <div class="d-flex align-items-end">
+    <% end %>
+      <div class="d-flex align-items-end p-5">
           <%= link_to "全ての商品を見る　>", public_items_path %>
       </div>
   </div>

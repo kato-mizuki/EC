@@ -6,12 +6,13 @@
 </div>
 <div class="container">
   <div class="row">
+    <%= form_with model: @order, url: public_orders_confirm_path do |f| %>
      <table>
       <thead>
         <tr>
           <th>支払方法</th>
         </tr>
-        <%= form_with model: @order, url: public_orders_confirm_path do |f| %>
+
 
         <tr>
           <td>
@@ -44,10 +45,6 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
     <%= f.hidden_field :address, :value => current_customer.address %>
     <%= f.hidden_field :address_name, :value => current_customer.last_name + current_customer.first_name %>
     <%= f.hidden_field :postal_code, :value => current_customer.postal_code %>
